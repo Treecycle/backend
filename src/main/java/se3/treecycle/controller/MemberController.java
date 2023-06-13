@@ -17,4 +17,8 @@ public class MemberController {
         return ResponseDto.success("성공", memberService.getTreeInfo(member_id));
     }
 
+    @GetMapping("member/nickname/{member_id}")
+    public ResponseDto readNickname(@PathVariable Long member_id) {
+        return ResponseDto.success("성공", memberService.getNickname(member_id));
+    }
 }
