@@ -30,7 +30,13 @@ public class EducationService {
         List<Education> educations = educationRepository.findAll();
         for (Education edu: educations) {
             boolean locked = true;
-            int starCount = starRepository.findByMemberAndEducation(member, edu).getStarCount();
+            int starCount;
+            if(starRepository.findByMemberAndEducation(member, edu).isEmpty()) {
+                starCount = 0;
+            }
+            else {
+                starCount = starRepository.findByMemberAndEducation(member, edu).get().getStarCount();
+            }
             if (edu.getId() > day) {
                 locked = false;
             }
