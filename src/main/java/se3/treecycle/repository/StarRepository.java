@@ -6,7 +6,9 @@ import se3.treecycle.entity.Education;
 import se3.treecycle.entity.Member;
 import se3.treecycle.entity.Star;
 
+import java.util.Optional;
+
 @Repository
 public interface StarRepository extends JpaRepository<Star, Long> {
-    Star findByMemberAndEducation(Member member, Education education);
+    Optional<Star> findByMemberAndEducation(Member member, Education education);
 }
