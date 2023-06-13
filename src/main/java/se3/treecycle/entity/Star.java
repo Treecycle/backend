@@ -1,5 +1,6 @@
 package se3.treecycle.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +21,11 @@ public class Star {
 
     @Column
     private int starCount;
+
+    @Builder
+    public Star(Member member, Education education, int starCount) {
+        this.member = member;
+        this.education = education;
+        this.starCount = starCount;
+    }
 }

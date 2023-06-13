@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class EduContentDto {
+public class EduVideoDto {
     private String video;
 }
