@@ -23,13 +23,15 @@ public class StarService {
 
     public TreeInfoDto saveStarResult(Long memberId, Long eduId, QuizResultDto quizResultDto) {
         Member member = memberRepository.findById(memberId).orElseThrow();
-        Education education = educationRepository.findById(eduId).orElseThrow();
-        Star star = Star.builder()
-                .member(member)
-                .education(education)
-                .starCount(quizResultDto.getStarCount())
-                .build();
-        starRepository.save(star);
+        if(educationRepository.findById(eduId).isPresent()) {
+            Education education = educationRepository.findById(eduId).orElseThrow();
+            Star star = Star.builder()
+                    .member(member)
+                    .education(education)
+                    .starCount(quizResultDto.getStarCount())
+                    .build();
+            starRepository.save(star);
+        }
 
         int growth = quizResultDto.getStarCount() * 5;
         int treeGrowth = member.getTreeGrowth() + growth;

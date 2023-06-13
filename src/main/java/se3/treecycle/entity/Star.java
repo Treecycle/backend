@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Star {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
